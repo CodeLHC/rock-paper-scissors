@@ -10,7 +10,6 @@ const choices = [rock, paper, scissors]
 const toTitleCase = (word) => word[0].toUpperCase() + word.slice(1)
 
 function getComputerChoice () {
-  // random return of rock, paper or scissors
   return choices[(Math.floor(Math.random() * choices.length))]
 }
 
@@ -27,8 +26,6 @@ function playRound (playerSelection, computerSelection) {
 }
 const computerSelection = getComputerChoice()
 
-
-// console.log(playRound(playerSelection, computerSelection))
 
 function game () {
 for (let i = 0; i<5; i++){
@@ -48,6 +45,5 @@ else if (computerScore> playerScore){console.log("Computer won! Better luck next
 }
 
 
- 
 
 console.log(game())
