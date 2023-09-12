@@ -19,9 +19,10 @@ function playRound (playerSelection, computerSelection) {
     playerScore = playerScore+1
     return `You Win! ${toTitleCase(playerSelection)} beats ${computerSelection}`
   } else if (playerSelection === computerSelection) {
-    computerScore = computerScore+1
+  
     return `It's a draw, both picked ${computerSelection}`
   }
+  computerScore = computerScore+1
   return `You Lose! ${toTitleCase(computerSelection)} beats ${playerSelection}`
 }
 const computerSelection = getComputerChoice()
@@ -30,6 +31,7 @@ const computerSelection = getComputerChoice()
 function game () {
 for (let i = 0; i<5; i++){
   let playerSelection = prompt("Rock, Paper or Scissors?")
+
  const result = playRound (playerSelection, computerSelection)
   console.log(`${result}
   Current score:
