@@ -5,8 +5,10 @@ const paper = 'paper';
 const choices = [rock, paper, scissors];
 
 const toTitleCase = (word) => word[0].toUpperCase() + word.slice(1);
+
 let playerScore = 0;
 let computerScore = 0;
+const winningScore = 5;
 
 function getComputerChoice() {
   const randomIndex = Math.floor(Math.random() * choices.length);
@@ -51,13 +53,13 @@ function showButtons(buttons) {
 }
 
 function finalScore() {
-  if (playerScore === 5) {
+  if (playerScore === winningScore) {
     showScores.innerText = '';
     showFinalResult.innerText = `Final score:
   Player: ${playerScore}    Computer: ${computerScore}
   You won! Congrats!`;
     hideButtons(buttons);
-  } else if (computerScore === 5) {
+  } else if (computerScore === winningScore) {
     showScores.innerText = '';
     showFinalResult.innerText = `Final score:
   Player: ${playerScore}    Computer: ${computerScore}
@@ -67,7 +69,7 @@ function finalScore() {
 }
 
 function showTryAgain() {
-  if (playerScore === 5 || computerScore === 5) {
+  if (playerScore === winningScore || computerScore === winningScore) {
     tryAgainButton.removeAttribute('hidden');
   }
 }
@@ -84,7 +86,7 @@ buttons.forEach((currentbtn) => {
   });
 });
 
-tryAgainButton.addEventListener('click', (e) => {
+tryAgainButton.addEventListener('click', () => {
   showButtons(buttons);
   tryAgainButton.setAttribute('hidden', true);
   playerScore = 0;
