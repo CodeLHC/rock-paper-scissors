@@ -37,6 +37,12 @@ const showRound = document.getElementById('showRound');
 const showScores = document.getElementById('showScores');
 const showFinalResult = document.getElementById('showFinalResult');
 
+function hideButtons(buttons) {
+  buttons.forEach((btn) => {
+    btn.style.visibility = 'hidden';
+  });
+}
+
 const buttons = document.querySelectorAll('.btn');
 buttons.forEach((currentbtn) => {
   currentbtn.addEventListener('click', (e) => {
@@ -47,9 +53,17 @@ buttons.forEach((currentbtn) => {
    Player: ${playerScore}    Computer: ${computerScore}`;
     showScores.innerText = scoreContent;
     if (playerScore === 5) {
-      showFinalResult.innerText = 'You won! Congrats!';
+      showScores.innerText = '';
+      showFinalResult.innerText = `Final score:
+      Player: ${playerScore}    Computer: ${computerScore}
+      You won! Congrats!`;
+      hideButtons(buttons);
     } else if (computerScore === 5) {
-      showFinalResult.innerText = 'Computer won! Better luck next time.';
+      showScores.innerText = '';
+      showFinalResult.innerText = `Final score:
+      Player: ${playerScore}    Computer: ${computerScore}
+      Computer won! Better luck next time.`;
+      hideButtons(buttons);
     }
   });
 });
